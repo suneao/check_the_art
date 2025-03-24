@@ -1,6 +1,14 @@
-[gd_scene format=3 uid="uid://cdgxy6wkbvafj"]
+[gd_scene load_steps=2 format=3 uid="uid://cdgxy6wkbvafj"]
 
-[node name="Main" type="Node3D"]
+[ext_resource type="Script" uid="uid://dh1q4qjntpji2" path="res://nodes/main.gd" id="1_xpfdc"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.4185)
+[node name="Main" type="Node"]
+script = ExtResource("1_xpfdc")
+
+[node name="UI" type="SubViewport" parent="."]
+
+[node name="MainMENU" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
