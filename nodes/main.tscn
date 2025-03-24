@@ -21,6 +21,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Camera2D" type="Camera2D" parent="UI"]
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="Character" type="Node3D" parent="World"]
