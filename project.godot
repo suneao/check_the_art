@@ -14,3 +14,16 @@ config/name="Check_the_art"
 run/main_scene="uid://cdgxy6wkbvafj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[importer_defaults]
+
+animation_library={
+&"animation/fps": 60.0
+}
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Floor"
+3d_physics/layer_3="Wall"
+3d_physics/layer_4="Object"

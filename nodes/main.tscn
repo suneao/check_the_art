@@ -1,8 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdgxy6wkbvafj"]
+[gd_scene load_steps=7 format=3 uid="uid://cdgxy6wkbvafj"]
 
 [ext_resource type="Script" uid="uid://dh1q4qjntpji2" path="res://nodes/main.gd" id="1_xpfdc"]
+[ext_resource type="Script" uid="uid://cvpv3hcnh1gks" path="res://nodes/character_body_3d.gd" id="2_a3ry3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpfdc"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a3ry3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufc4x"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a3ry3"]
+size = Vector3(10, 1, 10)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xpfdc")
@@ -28,6 +37,31 @@ offset_bottom = 40.0
 [node name="Character" type="Node3D" parent="World"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="World/Character"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("2_a3ry3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Character/CharacterBody3D"]
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Character/CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_xpfdc")
+
+[node name="Camera3D" type="Camera3D" parent="World/Character/CharacterBody3D"]
+
+[node name="Scene" type="Node3D" parent="World"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Scene"]
+physics_material_override = SubResource("PhysicsMaterial_a3ry3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Scene/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+shape = SubResource("BoxShape3D_ufc4x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Scene/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+mesh = SubResource("BoxMesh_a3ry3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World/Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.49498, 0)
+omni_range = 7.511
