@@ -1,7 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdgxy6wkbvafj"]
+[gd_scene load_steps=15 format=3 uid="uid://cdgxy6wkbvafj"]
 
 [ext_resource type="Script" uid="uid://dh1q4qjntpji2" path="res://nodes/main.gd" id="1_xpfdc"]
 [ext_resource type="Script" uid="uid://cvpv3hcnh1gks" path="res://nodes/character_body_3d.gd" id="2_a3ry3"]
+[ext_resource type="PackedScene" uid="uid://ye05btta37gb" path="res://nodes/control.tscn" id="2_ufc4x"]
+
+[sub_resource type="Environment" id="Environment_ufc4x"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ufc4x"]
+
+[sub_resource type="Compositor" id="Compositor_k8dvw"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_a3ry3"]
 
@@ -29,23 +36,19 @@ points = PackedVector3Array(-0.499434, -0.0238842, 0, -0.497087, -0.0238842, 0.0
 [node name="Main" type="Node"]
 script = ExtResource("1_xpfdc")
 
-[node name="UI" type="SubViewport" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ufc4x")
+camera_attributes = SubResource("CameraAttributesPractical_ufc4x")
+compositor = SubResource("Compositor_k8dvw")
 
-[node name="MainMENU" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="GUI" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Camera2D" type="Camera2D" parent="UI"]
+[node name="ShaderGlobalsOverride" type="ShaderGlobalsOverride" parent="."]
 
 [node name="World" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.460339, 0.887743, 0, -0.887743, 0.460339, 0, 4.19802, 2.74573)
+light_color = Color(0.763307, 0.717726, 0.607225, 1)
+shadow_enabled = true
 
 [node name="Character" type="Node3D" parent="World"]
 
@@ -106,7 +109,29 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Scene/RigidBody3D"]
 shape = SubResource("ConvexPolygonShape3D_ufc4x")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Scene"]
-transform = Transform3D(1, 0, 0, 0, 0.460339, 0.887743, 0, -0.887743, 0.460339, 0, 0, 2.74573)
-light_color = Color(0.763307, 0.717726, 0.607225, 1)
-shadow_enabled = true
+[node name="MainMENU" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GraphicSetting" parent="MainMENU" instance=ExtResource("2_ufc4x")]
+top_level = true
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="MainMENU"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

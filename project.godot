@@ -13,7 +13,16 @@ config_version=5
 config/name="Check_the_art"
 run/main_scene="uid://cdgxy6wkbvafj"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1000
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/extend_to_title=true
 
 [importer_defaults]
 
