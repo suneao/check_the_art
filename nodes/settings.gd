@@ -29,7 +29,8 @@ func _ready() -> void:
 	# easier on high-end machines that easily reach the monitor's refresh rate.
 	#DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	size = Vector2(size.x,get_viewport().size.y)
-	_on_very_low_preset_pressed()
+	_on_HideShowButton_toggled(0)
+	# _on_very_low_preset_pressed()
 
 func _process(delta: float) -> void:
 	counter += delta
@@ -52,9 +53,9 @@ func _on_HideShowButton_toggled(show_settings: bool) -> void:
 	var button := $HideShowButton
 	var settings_menu := $SettingsMenu
 	if show_settings:
-		button.text = "Hide settings"
+		button.text = "Back"
 	else:
-		button.text = "Show settings"
+		button.text = "Graphics"
 	settings_menu.visible = show_settings
 
 # Video settings.

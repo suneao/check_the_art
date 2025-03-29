@@ -18,11 +18,26 @@ boot_splash/fullsize=false
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1000
 
+[autoload]
+
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
+settings/stdout/print_gpu_profile=true
+
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
 window/size/extend_to_title=true
+
+[editor]
+
+import/atlas_max_width=4096
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [importer_defaults]
 
@@ -101,3 +116,7 @@ move_sprint={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+occlusion_culling/use_occlusion_culling=true

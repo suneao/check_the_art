@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu8s61phfeuvm"]
+
+[ext_resource type="Material" uid="uid://bsp6eaxgq830o" path="res://resources/texture/beige_wall_001_4k.tres" id="1_gdop6"]
+[ext_resource type="Material" uid="uid://ck1yw4b53e23u" path="res://resources/texture/light.tres" id="2_m2mth"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D"]
+material_override = ExtResource("1_gdop6")
+material_overlay = ExtResource("2_m2mth")
+
+[node name="RoomMain" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+size = Vector3(16, 16, 16)
+
+[node name="FrontDoor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="BackDoor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -8)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="LeftDoor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="RightDoor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, 0)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="RoomInside" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+operation = 2
+size = Vector3(15, 15, 15)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+operation = 2
+size = Vector3(16, 0.5, 16)

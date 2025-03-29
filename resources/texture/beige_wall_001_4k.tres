@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bsp6eaxgq830o"]
+
+[ext_resource type="Texture2D" uid="uid://qbl8jukyw8fd" path="res://resources/texture/beige_wall_001_4k.blend/textures/beige_wall_001_diff_4k.jpg" id="1_bktg4"]
+[ext_resource type="Texture2D" uid="uid://dlg60omm0yyrg" path="res://resources/texture/beige_wall_001_4k.blend/textures/beige_wall_001_rough_4k.jpg" id="2_ciqlk"]
+
+[resource]
+resource_name = "beige_wall_001"
+cull_mode = 2
+albedo_texture = ExtResource("1_bktg4")
+metallic_texture = ExtResource("2_ciqlk")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_ciqlk")
+roughness_texture_channel = 1
+normal_enabled = true

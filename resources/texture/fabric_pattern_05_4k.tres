@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dr8h168xmafwa"]
+
+[resource]
+resource_name = "fabric_pattern_05"
+cull_mode = 2
+metallic = 1.0
+metallic_texture_channel = 4
+roughness_texture_channel = 3
+normal_enabled = true
+normal_scale = 4.96
+uv1_scale = Vector3(10, 10, 10)
+uv1_offset = Vector3(0, -1, 0)

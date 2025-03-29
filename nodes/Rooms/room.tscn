@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyrmfjfef3n5g"]
+
+[ext_resource type="PackedScene" uid="uid://bu8s61phfeuvm" path="res://nodes/MainRoom.tscn" id="1_yco50"]
+[ext_resource type="PackedScene" uid="uid://co3iirqhj15in" path="res://resources/model/rubber_duck_toy_4k.blend/rubber_duck_toy_4k.blend" id="2_3qijr"]
+[ext_resource type="Material" uid="uid://bnhyp4sn0ript" path="res://resources/texture/wood_floor_4k.tres" id="3_2477n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3qijr"]
+size = Vector3(16, 0.5, 16)
+
+[node name="Room" type="Node3D"]
+
+[node name="CSGCombiner3D" parent="." instance=ExtResource("1_yco50")]
+
+[node name="blend_export" parent="." instance=ExtResource("2_3qijr")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 16, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+material_override = ExtResource("3_2477n")
+mesh = SubResource("BoxMesh_3qijr")
