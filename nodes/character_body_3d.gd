@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 # 移动参数
-@export var walk_speed = 5.0
-@export var sprint_speed = 8.0
+@export var walk_speed = 4.0
+@export var sprint_speed = 7.0
 @export var jump_velocity = 4.5
 @export var acceleration = 10.0   # 加速度（lerp插值权重）
 @export var deceleration = 15.0  # 减速度（lerp插值权重）

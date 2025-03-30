@@ -8,7 +8,7 @@
 resource_name = "wood_floor"
 cull_mode = 2
 albedo_texture = ExtResource("1_om15k")
-metallic_specular = 0.2
+metallic_specular = 0.1
 metallic_texture = ExtResource("2_yutgl")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("2_yutgl")
@@ -18,4 +18,7 @@ normal_texture = ExtResource("3_rpq1n")
 clearcoat_enabled = true
 clearcoat_roughness = 0.8
 clearcoat_texture = ExtResource("1_om15k")
+heightmap_enabled = true
+heightmap_scale = 1.404
+heightmap_texture = ExtResource("2_yutgl")
 uv1_scale = Vector3(16, 16, 16)

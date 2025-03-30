@@ -7,6 +7,8 @@
 [ext_resource type="Theme" uid="uid://d1mlf0jy4luh6" path="res://nodes/ui.tres" id="4_k8dvw"]
 
 [sub_resource type="Environment" id="Environment_ufc4x"]
+background_mode = 1
+background_color = Color(0.152048, 0.115669, 0.0638422, 1)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y2wr3"]
 dof_blur_far_enabled = true
@@ -55,15 +57,16 @@ deceleration = 20.0
 [node name="Camera3D" type="Camera3D" parent="World/Character/CharacterBody3D/Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436355, 0)
 attributes = SubResource("CameraAttributesPractical_y2wr3")
+doppler_tracking = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="World/Character/CharacterBody3D/Neck"]
-transform = Transform3D(1, 0, 0, 0, 0.976304, 0.216406, 0, -0.216406, 0.976304, 0.144238, 0.371022, -0.494997)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.144238, 0.371022, -0.494997)
 light_color = Color(0.876938, 0.833082, 0.71538, 1)
 light_energy = 3.0
 light_specular = 2.0
 shadow_enabled = true
 distance_fade_enabled = true
-spot_range = 16.0
+spot_range = 32.0
 spot_angle = 30.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Character/CharacterBody3D/Neck"]
@@ -84,13 +87,6 @@ collision_mask = 5
 shape = SubResource("ConcavePolygonShape3D_y2wr3")
 
 [node name="Room" parent="World/Scene/StaticBody3D" instance=ExtResource("3_y2wr3")]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="World/Scene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45686, 0)
-light_energy = 2.939
-light_volumetric_fog_energy = 0.354
-shadow_enabled = true
-omni_range = 7.511
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="World/Scene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.65697, -7.3794)
