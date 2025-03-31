@@ -13,10 +13,14 @@ config_version=5
 config/name="Check_the_art"
 config/tags=PackedStringArray("3d", "demo", "horror")
 run/main_scene="uid://cdgxy6wkbvafj"
+run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/fullsize=false
-config/icon="res://icon.svg"
+boot_splash/image="uid://dhpsnfqoj7m7c"
+config/icon="uid://b6muno4w8bax0"
+config/macos_native_icon="res://Check_the_art.icns"
+config/windows_native_icon="res://Check_the_art.ico"
 boot_splash/minimum_display_time=1000
 
 [autoload]

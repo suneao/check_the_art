@@ -106,8 +106,7 @@ spot_angle_attenuation = 0.659754
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25696, -0.404816, -0.137037)
 light_color = Color(0.756045, 0.733482, 0.661189, 1)
 light_energy = 0.5
-shadow_enabled = true
-shadow_caster_mask = 4294967293
+shadow_caster_mask = 4294966272
 
 [node name="Olight2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0182608, 0, 0.323652)
@@ -116,7 +115,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0182608, 0, 0.323652)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25696, -0.404816, -0.137037)
 light_color = Color(0.756045, 0.733482, 0.661189, 1)
 light_energy = 0.5
-shadow_enabled = true
 shadow_caster_mask = 4294967293
 
 [node name="Olight3" type="Node3D" parent="."]
@@ -126,7 +124,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220041, 0, -0.115713)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25696, -0.404816, -0.137037)
 light_color = Color(0.756045, 0.733482, 0.661189, 1)
 light_energy = 0.5
-shadow_enabled = true
 shadow_caster_mask = 4294967293
 
 [node name="Olight4" type="Node3D" parent="."]
@@ -136,7 +133,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483171, 0, 0.0159594)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25696, -0.404816, -0.137037)
 light_color = Color(0.756045, 0.733482, 0.661189, 1)
 light_energy = 0.5
-shadow_enabled = true
 shadow_caster_mask = 4294967293
 
 [node name="Olight5" type="Node3D" parent="."]
@@ -146,7 +142,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501145, 0, 0.322531)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25696, -0.404816, -0.137037)
 light_color = Color(0.756045, 0.733482, 0.661189, 1)
 light_energy = 0.5
-shadow_enabled = true
 shadow_caster_mask = 4294967293
 
 [node name="Olight6" type="Node3D" parent="."]
@@ -156,5 +151,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.236288, 0.0289605, 0.44020
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25696, -0.404816, -0.137037)
 light_color = Color(0.756045, 0.733482, 0.661189, 1)
 light_energy = 0.5
-shadow_enabled = true
 shadow_caster_mask = 4294967293
