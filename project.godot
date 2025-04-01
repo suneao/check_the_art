@@ -26,7 +26,7 @@ boot_splash/minimum_display_time=1000
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-GameStatus="*res://game_status.gd"
+GameStatus="*res://nodes/game_status.gd"
 
 [debug]
 
