@@ -15,10 +15,10 @@ config/tags=PackedStringArray("3d", "demo", "horror")
 run/main_scene="uid://cdgxy6wkbvafj"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.4", "Forward Plus")
-boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/bg_color=Color(0.0862745, 0.0784314, 0.0705882, 1)
 boot_splash/fullsize=false
 boot_splash/image="uid://dhpsnfqoj7m7c"
-config/icon="uid://b6muno4w8bax0"
+config/icon="uid://bmoxhli3wkfgd"
 config/macos_native_icon="res://Check_the_art.icns"
 config/windows_native_icon="res://Check_the_art.ico"
 boot_splash/minimum_display_time=1000
@@ -26,6 +26,7 @@ boot_splash/minimum_display_time=1000
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameStatus="*res://game_status.gd"
 
 [debug]
 
@@ -47,7 +48,9 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [importer_defaults]
 
 animation_library={
-&"animation/fps": 60.0
+&"animation/fps": 60.0,
+&"animation/import_rest_as_RESET": true,
+&"animation/remove_immutable_tracks": false
 }
 
 [input]
