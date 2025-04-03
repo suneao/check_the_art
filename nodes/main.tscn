@@ -195,6 +195,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 1200.0
+
 [connection signal="back" from="MainMenu/GraphicSetting" to="." method="_on_graphic_setting_back"]
 [connection signal="pressed" from="MainMenu/SettingMenu/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MainMenu/SettingMenu/Graphics" to="." method="_on_graphics_pressed"]
