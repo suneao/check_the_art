@@ -1,12 +1,13 @@
 extends Control
 
+signal back
 
 # Window project settings:
 #  - Stretch mode is set to `canvas_items` (`2d` in Godot 3.x)
 #  - Stretch aspect is set to `expand`
 @onready var world_environment = get_node("/root/Main/WorldEnvironment")
 @onready var directional_light = get_node("/root/Main/World/DirectionalLight3D")
-@onready var camera = get_node("/root/Main/World/Character/CharacterBody3D/Neck/Camera3D")
+@onready var camera = get_node("/root/Main/World/Character/CharacterBody3D/Neck/ShakePivot/Camera3D")
 @onready var fps_label := $FPSLabel
 @onready var resolution_label := $ResolutionLabel
 
@@ -52,11 +53,7 @@ func _on_HideShowButton_toggled(show_settings: bool) -> void:
 	# Option to hide the settings so you can see the changes to the 3d world better.
 	var button := $HideShowButton
 	var settings_menu := $SettingsMenu
-	if show_settings:
-		button.text = "Back"
-	else:
-		button.text = "Graphics"
-	settings_menu.visible = show_settings
+	back.emit()
 
 # Video settings.
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdgxy6wkbvafj"]
+[gd_scene load_steps=13 format=3 uid="uid://cdgxy6wkbvafj"]
 
 [ext_resource type="Script" uid="uid://dh1q4qjntpji2" path="res://nodes/main.gd" id="1_xpfdc"]
 [ext_resource type="Script" uid="uid://cvpv3hcnh1gks" path="res://nodes/character_body_3d.gd" id="2_a3ry3"]
@@ -19,8 +19,6 @@ dof_blur_far_distance = 15.0
 dof_blur_near_enabled = true
 dof_blur_near_transition = 2.0
 dof_blur_amount = 0.2
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_a3ry3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpfdc"]
 
@@ -74,11 +72,6 @@ deceleration = 20.0
 
 [node name="Neck" type="Node3D" parent="World/Character/CharacterBody3D"]
 
-[node name="Camera3D" type="Camera3D" parent="World/Character/CharacterBody3D/Neck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436355, 0)
-attributes = SubResource("CameraAttributesPractical_y2wr3")
-doppler_tracking = 1
-
 [node name="SpotLight3D" type="SpotLight3D" parent="World/Character/CharacterBody3D/Neck"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.144238, 0.371022, -0.494997)
 light_color = Color(0.876938, 0.833082, 0.71538, 1)
@@ -90,7 +83,13 @@ spot_range = 32.0
 spot_angle = 30.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Character/CharacterBody3D/Neck"]
-mesh = SubResource("CylinderMesh_a3ry3")
+
+[node name="ShakePivot" type="Node3D" parent="World/Character/CharacterBody3D/Neck"]
+
+[node name="Camera3D" type="Camera3D" parent="World/Character/CharacterBody3D/Neck/ShakePivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436355, 0)
+attributes = SubResource("CameraAttributesPractical_y2wr3")
+doppler_tracking = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Character/CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_xpfdc")
@@ -117,14 +116,18 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 3.6
 layers = 2
 mesh = SubResource("CapsuleMesh_y2wr3")
 
-[node name="MainMENU" type="Control" parent="."]
+[node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="GraphicSetting" parent="MainMENU" instance=ExtResource("2_ufc4x")]
+[node name="GraphicSetting" parent="MainMenu" instance=ExtResource("2_ufc4x")]
+visible = false
 top_level = true
+layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -132,15 +135,68 @@ offset_bottom = 1080.0
 grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 0
+size_flags_vertical = 0
 theme = ExtResource("4_k8dvw")
 
-[node name="Button" type="Button" parent="MainMENU"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="SettingMenu" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -50.5
+offset_right = 89.0
+offset_bottom = 50.5
+grow_vertical = 2
+alignment = 1
+
+[node name="Setting" type="Label" parent="MainMenu/SettingMenu"]
+layout_mode = 2
+text = "Setting"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MainMenu/SettingMenu"]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="MainMenu/SettingMenu"]
+layout_mode = 2
+text = "Continue"
+flat = true
+
+[node name="Graphics" type="Button" parent="MainMenu/SettingMenu"]
+layout_mode = 2
+text = "Graphics"
+flat = true
+
+[node name="Control" type="Button" parent="MainMenu/SettingMenu"]
+layout_mode = 2
+text = "Control"
+flat = true
+
+[node name="Save" type="Button" parent="MainMenu/SettingMenu"]
+layout_mode = 2
+text = "Save"
+flat = true
+
+[node name="Exit" type="Button" parent="MainMenu/SettingMenu"]
+layout_mode = 2
+text = "Exit"
+flat = true
+
+[node name="ControlSettings" type="Control" parent="MainMenu"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[connection signal="back" from="MainMenu/GraphicSetting" to="." method="_on_graphic_setting_back"]
+[connection signal="pressed" from="MainMenu/SettingMenu/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MainMenu/SettingMenu/Graphics" to="." method="_on_graphics_pressed"]
+[connection signal="pressed" from="MainMenu/SettingMenu/Control" to="." method="_on_control_pressed"]
+[connection signal="pressed" from="MainMenu/SettingMenu/Exit" to="." method="_on_exit_pressed"]

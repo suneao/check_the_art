@@ -43,7 +43,7 @@ import/atlas_max_width=4096
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/octasphere/plugin.cfg")
 
 [importer_defaults]
 

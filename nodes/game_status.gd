@@ -1,6 +1,6 @@
 extends Node
 
-var status:= "main_menu"
+var status:= "in_game"
 var room_remain:=10
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,39 +1,54 @@
 extends CharacterBody3D
 
 # 移动参数
-@export var walk_speed = 4.0
-@export var sprint_speed = 7.0
+@export var walk_speed = 3.3
+@export var sprint_speed = 5.0
 @export var jump_velocity = 4.5
-@export var acceleration = 10.0   # 加速度（lerp插值权重）
-@export var deceleration = 15.0  # 减速度（lerp插值权重）
+@export var acceleration = 10.0
+@export var deceleration = 15.0
 
 # 视角参数
 @export var mouse_sensitivity = 0.002
 @export var max_look_up = deg_to_rad(89)
 @export var max_look_down = deg_to_rad(-89)
 
+# 倾斜参数
+@export var tilt_max_angle := deg_to_rad(15.0)  # 最大倾斜角度
+@export var tilt_sensitivity := 0.005            # 倾斜敏感度
+@export var tilt_smooth_speed := 3.0            # 倾斜平滑速度
+@export var tilt_return_speed := 5.0            # 回正速度
+
 # 节点引用
 @onready var neck := $Neck
-@onready var camera := $Neck/Camera3D
+@onready var camera := $Neck/ShakePivot/Camera3D
+@onready var shake_pivot := $Neck/ShakePivot
 
 # 物理参数
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var current_speed = walk_speed  # 当前目标速度
+var current_speed = walk_speed
+
+# 倾斜控制变量
+var current_tilt := 0.0
+var target_tilt := 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# 初始化节点位置
+	shake_pivot.position = Vector3.ZERO
+	shake_pivot.rotation = Vector3.ZERO
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		# 基础视角旋转
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		neck.rotate_x(-event.relative.y * mouse_sensitivity)
 		neck.rotation.x = clamp(neck.rotation.x, max_look_down, max_look_up)
-	
-	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED)
+		
+		# Bodycam倾斜计算
+		target_tilt = clamp(-event.relative.x * tilt_sensitivity, -tilt_max_angle, tilt_max_angle)
 
 func _physics_process(delta):
-	# 重力与跳跃逻辑保持不变...
+	# 重力与跳跃
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	if Input.is_action_just_pressed("move_jump") and is_on_floor():
@@ -57,3 +72,15 @@ func _physics_process(delta):
 	velocity.z = new_h_velocity.z
 	
 	move_and_slide()
+
+func _process(delta):
+	# 倾斜平滑处理
+	current_tilt = lerp(current_tilt, target_tilt, delta * tilt_smooth_speed)
+	target_tilt = lerp(target_tilt, 0.0, delta * tilt_return_speed)
+	
+	# 仅应用Z轴倾斜效果
+	shake_pivot.rotation = Vector3(
+		0,  # 清空X轴旋转
+		0,  # 清空Y轴旋转
+		current_tilt  # 仅保留Z轴倾斜
+	)
